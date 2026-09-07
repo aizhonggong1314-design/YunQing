@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="仿 mail.163.com 登录页面的演示界面(纯前端,无真实登录)">
+<title>163网易邮箱 - 你的专业电子邮局(仿制演示)</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== 顶部导航 ===== -->
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="#" id="brandLogo" aria-label="云庆 首页">
+        <svg class="brand-ico" viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="icoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4D8DFF"/>
+              <stop offset="1" stop-color="#2F5FD0"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="44" height="44" rx="10" fill="url(#icoGrad)"/>
+          <path d="M9 15.5a3 3 0 0 1 3-3h24a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3v-17Z" fill="#fff" opacity=".95"/>
+          <path d="M9.8 15.8 24 26.2 38.2 15.8" fill="none" stroke="#2F5FD0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-main"><b class="hl">云庆</b></span>
+          <span class="brand-sub">BBSbubishuo</span>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="顶部功能导航">
+        <ul>
+          <li><a href="#" data-demo>手机App下载</a></li>
+          <li><a href="#" data-demo>电脑客户端下载</a></li>
+          <li><a href="#" data-demo>VIP</a></li>
+          <li><a href="#" data-demo>会员</a></li>
+          <li><a href="#" data-demo>靓号</a></li>
+          <li><a href="#" data-demo>企业邮箱</a></li>
+          <li><a href="#" data-demo>海外登录</a></li>
+          <li><a href="#" data-demo>安全</a></li>
+          <li><a href="#" data-demo>帮助</a></li>
+          <li><a href="#" data-demo>反馈</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== 主体 ===== -->
+  <main class="main">
+    <div class="blob blob-a" aria-hidden="true"></div>
+    <div class="blob blob-b" aria-hidden="true"></div>
+
+    <div class="hero">
+
+      <!-- 左侧介绍区 -->
+      <section class="hero-intro" aria-label="产品介绍">
+        <h1>你的<b>专业电子邮局</b></h1>
+        <p class="lead">安全、稳定、大容量的免费邮箱服务，登录即用，多端随心同步。</p>
+
+        <ul class="feats">
+          <li>
+            <span class="feat-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.6v5.7c0 4.7 3.2 8.6 7.5 10.2 4.3-1.6 7.5-5.5 7.5-10.2V5.6L12 2.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 11.6l2.3 2.3 4.2-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="feat-txt"><b>安全可靠</b><i>专业反垃圾、防病毒，全链路加密传输</i></span>
+          </li>
+          <li>
+            <span class="feat-ico">
+              <svg viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 9.5l8 5 8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="feat-txt"><b>海量空间</b><i>免费容量自动扩展，告别存储焦虑</i></span>
+          </li>
+          <li>
+            <span class="feat-ico">
+              <svg viewBox="0 0 24 24"><path d="M12 4v13m0 0-4.5-4.5M12 17l4.5-4.5M4.5 20h15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="feat-txt"><b>多端同步</b><i>网页、手机、电脑客户端随时收发</i></span>
+          </li>
+        </ul>
+
+        <div class="app-card">
+          <canvas id="qrApp" width="200" height="200" aria-label="网易邮箱大师下载二维码"></canvas>
+          <div class="app-txt">
+            <b>网易邮箱大师</b>
+            <span>扫码下载 App<br>登录 / 收发邮件更便捷</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 右侧登录卡片 -->
+      <section class="login-card" id="loginCard" aria-label="登录">
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" id="tabQr" role="tab" aria-selected="true" data-tab="qr">扫码登录</button>
+          <button class="tab" id="tabAcct" role="tab" aria-selected="false" data-tab="account">账号登录</button>
+        </div>
+
+        <!-- 扫码登录 -->
+        <div class="panel panel-qr" data-panel="qr">
+          <h2>扫码登录</h2>
+          <canvas id="qrLogin" width="400" height="400" aria-label="登录二维码"></canvas>
+          <p class="qr-tip">请使用<b>网易邮箱大师</b> App 或手机扫码登录</p>
+          <button type="button" class="qr-refresh" id="qrRefresh">二维码失效，点击刷新</button>
+          <div class="mini-links">
+            <a href="#" id="qrToPwd">密码登录</a>
+            <a href="#" data-demo>注册新账号</a>
+          </div>
+          <p class="agree">登录即代表您已阅读并接受
+            <a href="#" data-demo>《服务条款》</a>和<a href="#" data-demo>《隐私政策》</a>
+          </p>
+        </div>
+
+        <!-- 账号登录 -->
+        <div class="panel panel-account" data-panel="account" hidden>
+          <div class="acct-top">
+            <h2>账号登录</h2>
+            <div class="top-links">
+              <a href="#" data-demo>注册新账号</a>
+              <a href="#" data-demo>注册VIP</a>
+            </div>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="field" id="fieldAccount">
+              <div class="inputbox">
+                <svg class="ficon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.8 19.4a7.6 7.6 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <input type="text" id="account" name="account" placeholder="邮箱账号或手机号码" autocomplete="username" spellcheck="false">
+                <button type="button" class="clear-btn" id="clearAcct" aria-label="清空账号" hidden>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#c3c9d4"/><path d="M9 9l6 6M15 9l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <p class="err" role="alert"></p>
+            </div>
+
+            <div class="field" id="fieldPwd">
+              <div class="inputbox">
+                <svg class="ficon" viewBox="0 0 24 24"><rect x="5" y="10.2" width="14" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.2V7.4a3.5 3.5 0 0 1 7 0v2.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                <input type="password" id="pwd" name="password" placeholder="输入密码" autocomplete="current-password">
+                <button type="button" class="eye" id="eye" aria-label="显示密码">
+                  <svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                </button>
+              </div>
+              <p class="err" role="alert"></p>
+            </div>
+
+            <div class="field captcha-row" id="fieldCaptcha">
+              <div class="inputbox captcha-box">
+                <input type="text" id="captcha" name="captcha" placeholder="输入右侧验证码" autocomplete="off" spellcheck="false">
+                <canvas id="captchaImg" width="120" height="46" title="看不清？点击刷新" aria-label="验证码图片,点击刷新"></canvas>
+              </div>
+              <p class="err" role="alert"></p>
+            </div>
+
+            <p class="form-alert" id="formAlert" role="alert" hidden></p>
+
+            <div class="opt-row">
+              <button type="button" class="check" id="checkRemember" role="checkbox" aria-checked="false">
+                <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.4 4.4L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                30天内免登录
+              </button>
+              <a href="#" class="forget" data-demo>忘记密码？</a>
+            </div>
+
+            <button type="submit" class="login-btn" id="loginBtn">登&ensp;录</button>
+
+            <p class="demo-hint">演示页面：账号密码可任意填写，按提示输入验证码即可体验“登录成功”</p>
+          </form>
+        </div>
+
+        <!-- 登录成功浮层 -->
+        <div class="result" id="result" hidden>
+          <span class="ok-ring">
+            <svg viewBox="0 0 24 24"><path d="M5 12.5l4.4 4.4L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>登录成功</h3>
+          <p class="result-acct" id="resultAcct"></p>
+          <p class="result-note">（仿制演示环境，未发送任何真实网络请求）</p>
+          <button type="button" class="login-btn ghost" id="resultBack">返回登录</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#" data-demo>网易首页</a><i>|</i>
+      <a href="#" data-demo>企业邮箱</a><i>|</i>
+      <a href="#" data-demo>网易外贸通</a><i>|</i>
+      <a href="#" data-demo>政府公益热线</a>
+    </div>
+    <p>网易公司版权所有 ©1997-2025　网易公司</p>
+    <p>增值电信业务经营许可证：粤B2-20090191　粤ICP备13000828号　粤公网安备 44010602006299号</p>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
